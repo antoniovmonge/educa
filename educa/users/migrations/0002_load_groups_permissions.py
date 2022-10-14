@@ -8,122 +8,152 @@ def maincmd(apps, schema_editor):
     Permission = apps.get_model("auth", "Permission")
     ContentType = apps.get_model("contenttypes", "ContentType")
     # content_type = ContentType.objects.get_for_model(Permission)
-    content_type_course = ContentType.objects.get_for_model(apps.get_model("courses", "Course"))
-    content_type_module = ContentType.objects.get_for_model(apps.get_model("courses", "Module"))
-    content_type_content = ContentType.objects.get_for_model(apps.get_model("courses", "Content"))
-    content_type_file = ContentType.objects.get_for_model(apps.get_model("courses", "File"))
-    content_type_image = ContentType.objects.get_for_model(apps.get_model("courses", "Image"))
-    content_type_text = ContentType.objects.get_for_model(apps.get_model("courses", "Text"))
-    
+    content_type_course = ContentType.objects.get_for_model(
+        apps.get_model("courses", "Course")
+    )
+    content_type_module = ContentType.objects.get_for_model(
+        apps.get_model("courses", "Module")
+    )
+    content_type_content = ContentType.objects.get_for_model(
+        apps.get_model("courses", "Content")
+    )
+    content_type_file = ContentType.objects.get_for_model(
+        apps.get_model("courses", "File")
+    )
+    content_type_image = ContentType.objects.get_for_model(
+        apps.get_model("courses", "Image")
+    )
+    content_type_text = ContentType.objects.get_for_model(
+        apps.get_model("courses", "Text")
+    )
 
     # CREATE PERMISSIONS
     # Course
-    can_add_course, _ = Permission.objects.get_or_create(
-        codename="can_add_course", name="Can add course", content_type=content_type_course
+    add_course, _ = Permission.objects.get_or_create(
+        codename="add_course", name="Can add course", content_type=content_type_course
     )
-    can_change_course, _ = Permission.objects.get_or_create(
-        codename="can_change_course", name="Can change course", content_type=content_type_course
+    change_course, _ = Permission.objects.get_or_create(
+        codename="change_course",
+        name="Can change course",
+        content_type=content_type_course,
     )
-    can_delete_course, _ = Permission.objects.get_or_create(
-        codename="can_delete_course", name="Can delete course", content_type=content_type_course
+    delete_course, _ = Permission.objects.get_or_create(
+        codename="delete_course",
+        name="Can delete course",
+        content_type=content_type_course,
     )
-    can_view_course, _ = Permission.objects.get_or_create(
-        codename="can_add_course", name="Can add course", content_type=content_type_course
+    view_course, _ = Permission.objects.get_or_create(
+        codename="view_course", name="Can view course", content_type=content_type_course
     )
     # Module
-    can_add_module, _ = Permission.objects.get_or_create(
-        codename="can_add_module", name="Can add module", content_type=content_type_module
+    add_module, _ = Permission.objects.get_or_create(
+        codename="add_module", name="Can add module", content_type=content_type_module
     )
-    can_change_module, _ = Permission.objects.get_or_create(
-        codename="can_change_module", name="Can change module", content_type=content_type_module
+    change_module, _ = Permission.objects.get_or_create(
+        codename="change_module",
+        name="Can change module",
+        content_type=content_type_module,
     )
-    can_delete_module, _ = Permission.objects.get_or_create(
-        codename="can_delete_module", name="Can delete module", content_type=content_type_module
+    delete_module, _ = Permission.objects.get_or_create(
+        codename="delete_module",
+        name="Can delete module",
+        content_type=content_type_module,
     )
-    can_view_module, _ = Permission.objects.get_or_create(
-        codename="can_add_module", name="Can add module", content_type=content_type_module
+    view_module, _ = Permission.objects.get_or_create(
+        codename="view_module", name="Can view module", content_type=content_type_module
     )
     # Content
-    can_add_content, _ = Permission.objects.get_or_create(
-        codename="can_add_content", name="Can add content", content_type=content_type_content
+    add_content, _ = Permission.objects.get_or_create(
+        codename="add_content",
+        name="Can add content",
+        content_type=content_type_content,
     )
-    can_change_content, _ = Permission.objects.get_or_create(
-        codename="can_change_content", name="Can change content", content_type=content_type_content
+    change_content, _ = Permission.objects.get_or_create(
+        codename="change_content",
+        name="Can change content",
+        content_type=content_type_content,
     )
-    can_delete_content, _ = Permission.objects.get_or_create(
-        codename="can_delete_content", name="Can delete content", content_type=content_type_content
+    delete_content, _ = Permission.objects.get_or_create(
+        codename="delete_content",
+        name="Can delete content",
+        content_type=content_type_content,
     )
-    can_view_content, _ = Permission.objects.get_or_create(
-        codename="can_add_content", name="Can add content", content_type=content_type_content
+    view_content, _ = Permission.objects.get_or_create(
+        codename="view_content",
+        name="Can view content",
+        content_type=content_type_content,
     )
     # File
-    can_add_file, _ = Permission.objects.get_or_create(
-        codename="can_add_file", name="Can add file", content_type=content_type_file
+    add_file, _ = Permission.objects.get_or_create(
+        codename="add_file", name="Can add file", content_type=content_type_file
     )
-    can_change_file, _ = Permission.objects.get_or_create(
-        codename="can_change_file", name="Can change file", content_type=content_type_file
+    change_file, _ = Permission.objects.get_or_create(
+        codename="change_file", name="Can change file", content_type=content_type_file
     )
-    can_delete_file, _ = Permission.objects.get_or_create(
-        codename="can_delete_file", name="Can delete file", content_type=content_type_file
+    delete_file, _ = Permission.objects.get_or_create(
+        codename="delete_file", name="Can delete file", content_type=content_type_file
     )
-    can_view_file, _ = Permission.objects.get_or_create(
-        codename="can_add_file", name="Can add file", content_type=content_type_file
+    view_file, _ = Permission.objects.get_or_create(
+        codename="view_file", name="Can view file", content_type=content_type_file
     )
     # Image
-    can_add_image, _ = Permission.objects.get_or_create(
-        codename="can_add_image", name="Can add image", content_type=content_type_image
+    add_image, _ = Permission.objects.get_or_create(
+        codename="add_image", name="Can add image", content_type=content_type_image
     )
-    can_change_image, _ = Permission.objects.get_or_create(
-        codename="can_change_image", name="Can change image", content_type=content_type_image
+    change_image, _ = Permission.objects.get_or_create(
+        codename="change_image",
+        name="Can change image",
+        content_type=content_type_image,
     )
-    can_delete_image, _ = Permission.objects.get_or_create(
-        codename="can_delete_image", name="Can delete image", content_type=content_type_image
+    delete_image, _ = Permission.objects.get_or_create(
+        codename="delete_image",
+        name="Can delete image",
+        content_type=content_type_image,
     )
-    can_view_image, _ = Permission.objects.get_or_create(
-        codename="can_add_image", name="Can add image", content_type=content_type_image
+    view_image, _ = Permission.objects.get_or_create(
+        codename="view_image", name="Can view image", content_type=content_type_image
     )
     # Text
-    can_add_text, _ = Permission.objects.get_or_create(
-        codename="can_add_text", name="Can add text", content_type=content_type_text
+    add_text, _ = Permission.objects.get_or_create(
+        codename="add_text", name="Can add text", content_type=content_type_text
     )
-    can_change_text, _ = Permission.objects.get_or_create(
-        codename="can_change_text", name="Can change text", content_type=content_type_text
+    change_text, _ = Permission.objects.get_or_create(
+        codename="change_text", name="Can change text", content_type=content_type_text
     )
-    can_delete_text, _ = Permission.objects.get_or_create(
-        codename="can_delete_text", name="Can delete text", content_type=content_type_text
+    delete_text, _ = Permission.objects.get_or_create(
+        codename="delete_text", name="Can delete text", content_type=content_type_text
     )
-    can_view_text, _ = Permission.objects.get_or_create(
-        codename="can_add_text", name="Can add text", content_type=content_type_text
+    view_text, _ = Permission.objects.get_or_create(
+        codename="view_text", name="Can view text", content_type=content_type_text
     )
-    
 
     # Create Groups with Permissions
     GROUPS_PERMISSIONS = {
         "Instructors": [
-            can_add_course,
-            can_change_course,
-            can_delete_course,
-            can_view_course,
-            can_add_module,
-            can_change_module,
-            can_delete_module,
-            can_view_module,
-            can_add_content,
-            can_change_content,
-            can_delete_content,
-            can_view_content,
-            can_add_file,
-            can_change_file,
-            can_delete_file,
-            can_view_file,
-            can_add_image,
-            can_change_image,
-            can_delete_image,
-            can_view_image,
-            can_add_text,
-            can_change_text,
-            can_delete_text,
-            can_view_text
+            add_course,
+            change_course,
+            delete_course,
+            view_course,
+            add_module,
+            change_module,
+            delete_module,
+            view_module,
+            add_content,
+            change_content,
+            delete_content,
+            view_content,
+            add_file,
+            change_file,
+            delete_file,
+            view_file,
+            add_image,
+            change_image,
+            delete_image,
+            view_image,
+            add_text,
+            change_text,
+            delete_text,
+            view_text,
         ]
     }
 

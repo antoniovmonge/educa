@@ -27,7 +27,7 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = "DRF APP"
+project = "EDUCA"
 copyright = """2022, Antonio V Monge"""
 author = "Antonio V Monge"
 
