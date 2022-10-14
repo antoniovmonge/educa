@@ -11,3 +11,25 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+/* a:link {
+  text-decoration: none;
+} */
+
+/* a:visited {
+  text-decoration: none;
+} */
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+/* a:active {
+  text-decoration: none;
+} */

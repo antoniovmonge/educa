@@ -12,8 +12,11 @@ from drf_spectacular.views import (
 )
 from rest_framework.authtoken.views import obtain_auth_token
 
+from educa.courses.views import CourseListView
+
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("home/", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("", CourseListView.as_view(), name="course_list"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
