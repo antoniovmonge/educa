@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if subject %}
+{{ subject.title }} courses
+{% else %}
+All courses
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+
+<div class="row gx-5">
+  <!-- Sidebar -->
+  <div class="col-3 p-3 text-white bg-dark">
+    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4">Subjects</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        {% if not subject %}
+        <a href="{% url 'course_list' %}" class="nav-link active">
+          {% else %}
+          <a href="{% url 'course_list' %}" class="nav-link text-white">
+            {% endif %}
+            <h5>All</h5>
+          </a>
+      </li>
+      {% for s in subjects %}
+      <li class="nav-item">
+        {% if subject == s %}
+        <a href="{% url 'course_list_subject' s.slug %}" class="nav-link active">
+          {% else %}
+
+          <a href="{% url 'course_list_subject' s.slug %}" class="nav-link text-white">
+            {% endif %}
+            <h5>{{ s.title }}</h5>
+            <span>{{ s.total_courses }} courses</span>
+          </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- End Sidebar -->
+  <!-- Content -->
+  <div class="col-9">
+    <h1>
+      {% if subject %}
+      {{ subject.title }} courses
+      {% else %}
+      All courses
+      {% endif %}
+    </h1>
+    <hr>
+    {% for course in courses %}
+    {% with subject=course.subject %}
+    <h3>
+      <a href="{% url 'course_detail' course.slug %}">
+        {{ course.title }}
+      </a>
+    </h3>
+    <p>
+      <a href="{% url 'course_list_subject' subject.slug %}">{{ subject }}</a>.
+      {{ course.total_modules }} modules.
+      Instructor: {{ course.owner.name }}
+    </p>
+    {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
