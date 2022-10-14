@@ -43,7 +43,7 @@ class Command(BaseCommand):
 def create_local_superuser():
     User.objects.create_superuser(email="admin@email.com", password="testpass123")
     EmailAddress.objects.create(
-        # User is selected in this way because it must be a MaterialsUser Instance
+        # User is selected in this way because it must be a User Instance
         user=User.objects.get(email="admin@email.com"),
         email="admin@email.com",
         verified=True,
@@ -54,7 +54,7 @@ def create_local_superuser():
 def create_local_normal_user():
     User.objects.create_user(email="user@email.com", password="testpass123")
     EmailAddress.objects.create(
-        # User is selected in this way because it must be a MaterialsUser Instance
+        # User is selected in this way because it must be a User Instance
         user=User.objects.get(email="user@email.com"),
         email="user@email.com",
         verified=True,

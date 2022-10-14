@@ -1,5 +1,5 @@
 """
-ASGI config for DRF APP project.
+ASGI config for EDUCA project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
