@@ -4,6 +4,7 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
+from django.urls import reverse_lazy
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # educa/
@@ -78,9 +79,10 @@ THIRD_PARTY_APPS = [
     "drf_spectacular",
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    "embed_video",
 ]
 
-LOCAL_APPS = ["educa.users", "educa.apis", "educa.courses"]
+LOCAL_APPS = ["educa.users", "educa.apis", "educa.courses", "educa.students"]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -100,7 +102,8 @@ AUTHENTICATION_BACKENDS = [
 # AUTH_USER_MODEL = "users.User"
 AUTH_USER_MODEL = "users.CustomUser"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "users:redirect"
+# LOGIN_REDIRECT_URL = "users:redirect"
+LOGIN_REDIRECT_URL = reverse_lazy("student_course_list")
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
