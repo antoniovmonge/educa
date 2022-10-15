@@ -8,23 +8,23 @@
 </h1>
 <div class="contents">
   <h3>Modules</h3>
-  <ul id="modules">
+  <ul class="nav nav-pills flex-column mb-auto">
     {% for m in object.modules.all %}
-    {% if m == module %}
-    <li data-id="{{ m.id }}" class="selected" >
-    {% else %}
-    <li data-id="{{ m.id }}">
-    {% endif %}
-      <a href="{% url 'student_course_detail_module' object.id m.id %}">
-        <span>
-          Module <span class="order">{{ m.order|add:1 }}</span>
-        </span>
-        <br>
-        {{ m.title }}
-      </a>
-    </li>
-    {% empty %}
-    <li>No modules yet.</li>
+      <li data-id="{{ m.id }}" class="nav-item">
+      {% if m == module %}
+        <a href="{% url 'student_course_detail_module' object.id m.id %}" class="nav-link active">
+      {% else %}
+        <a href="{% url 'student_course_detail_module' object.id m.id %}" class="nav-link">
+      {% endif %}
+          <span>
+            Module <span class="order">{{ m.order|add:1 }}</span>
+          </span>
+          <!-- <br> -->
+          {{ m.title }}
+        </a>
+      </li>
+      {% empty %}
+      <li>No modules yet.</li>
     {% endfor %}
   </ul>
 </div>
